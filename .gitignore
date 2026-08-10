@@ -1,0 +1,32 @@
+# ─── Python / Backend ───────────────────────────────────────────────────────
+backend/venv/
+backend/__pycache__/
+backend/*.py[cod]
+backend/*.pyo
+backend/caritas_chatbot.db          # SQLite DB regenerated on first run
+*.egg-info/
+dist/
+build/
+
+# ─── Environment variables (NEVER commit real secrets) ───────────────────────
+backend/.env
+# keep .env.example so teammates can onboard
+!backend/.env.example
+
+# ─── Node / Frontend ────────────────────────────────────────────────────────
+frontend/node_modules/
+frontend/dist/                       # built artefacts; deploy from CI instead
+
+# ─── OS & Editor noise ──────────────────────────────────────────────────────
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+*.swp
+*.swo
+*.orig
+
+# ─── Misc ───────────────────────────────────────────────────────────────────
+*.log
+*.pid
+.cache/

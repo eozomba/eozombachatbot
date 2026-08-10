@@ -1,0 +1,154 @@
+/* ---------------------------------------------------------------
+   Design tokens — pulled directly from the Caritas University crest:
+   the terracotta/orange cross, white ground, near-black wordmark,
+   and a dark green lifted from the palm fronds for small accents.
+   No gradients anywhere. Radii are small and consistent — a crisp,
+   "stamped" feel rather than soft chat-bubble rounding.
+------------------------------------------------------------------ */
+:root {
+  --orange: #D9542A;
+  --orange-700: #B5401E;
+  --orange-100: #FBE4D8;
+
+  /* the actual portal's operative color is a deep institutional red —
+     distinct from the crest's terracotta, used for every clickable/
+     actionable thing so the app reads like the real system */
+  --red: #A10E10;
+  --red-700: #7E0B0D;
+  --red-100: #F5DEDE;
+  --red-200: #EFC9C9;
+
+  --ink: #211D19;
+  --ink-soft: #55504A;
+  --muted: #948C80;
+
+  --paper: #FFFFFF;
+  --surface: #F7F4EF;
+  --line: #E6E0D5;
+  --line-strong: #D2C9B9;
+
+  --green: #2E6B3D;
+  --green-100: #E1EDE1;
+
+  --font-display: 'Space Grotesk', 'Arial Narrow', sans-serif;
+  --font-body: 'IBM Plex Sans', 'Segoe UI', sans-serif;
+
+  --r-sm: 3px;
+  --r-md: 6px;
+  --r-lg: 10px;
+
+  --shadow-flat: 0 1px 0 rgba(33, 29, 25, 0.06);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html, body, #root {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  color: var(--ink);
+  background: var(--surface);
+  -webkit-font-smoothing: antialiased;
+  -webkit-tap-highlight-color: transparent;
+}
+
+button, input, textarea {
+  font-family: inherit;
+}
+
+::selection {
+  background: var(--red-100);
+  color: var(--red-700);
+}
+
+:focus-visible {
+  outline: 2px solid var(--red);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+.app-shell {
+  height: 100vh;
+  height: 100dvh;
+  max-width: 580px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  background: var(--paper);
+  position: relative;
+  border-left: 1px solid var(--line);
+  border-right: 1px solid var(--line);
+  z-index: 10;
+}
+
+/* Desktop Ambient Background Slideshow */
+.bg-slideshow-container {
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.bg-slide-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  filter: brightness(0.4) contrast(1.1) blur(3px);
+  transform: scale(1.05);
+  transition: opacity 1.5s ease-in-out, transform 8s linear;
+}
+
+.bg-slide-img.active {
+  opacity: 0.85;
+  transform: scale(1);
+}
+
+.bg-overlay-glass {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at center, rgba(161, 14, 16, 0.15), rgba(33, 29, 25, 0.85));
+}
+
+@media (min-width: 581px) {
+  body {
+    padding: 24px 0;
+    background: #181512;
+  }
+  .app-shell {
+    height: calc(100vh - 48px);
+    height: calc(100dvh - 48px);
+    border-radius: var(--r-lg);
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.45);
+  }
+}
+
+/* scrollbars — thin, unobtrusive */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--line-strong) transparent;
+}
+*::-webkit-scrollbar {
+  width: 6px;
+}
+*::-webkit-scrollbar-thumb {
+  background: var(--line-strong);
+  border-radius: 3px;
+}
+
