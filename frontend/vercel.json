@@ -1,0 +1,8 @@
+{
+  "rewrites": [
+    {
+      "source": "/api/:path*",
+      "destination": "https://eozombachatbot-production.up.railway.app/api/:path*"
+    }
+  ]
+}
