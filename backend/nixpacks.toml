@@ -1,2 +1,0 @@
-[providers]
-apt = ["libgomp1"]
